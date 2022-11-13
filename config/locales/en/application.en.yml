@@ -1,8 +1,8 @@
 en:
   application:
-    name: Untitled Application
-    owner: Unidentified Developer
-    description: "You can update this description in `config/locales/en/application.en.yml`."
-    keywords: untitled application seo keywords
-    support_email: change.me@localhost
-    key: untitled_application
+    name: Our Story
+    owner: our-story.app
+    description: "A tool for nonprofits and donors to provide transparency and efficiency in the donation process"
+    keywords: Our Story nonprofit management donation processing
+    support_email: beaugrzanich@gmail.com
+    key: our-story
