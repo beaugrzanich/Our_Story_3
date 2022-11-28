@@ -47,6 +47,8 @@ Rails.application.routes.draw do
         end
 
         # routes for standard user actions and resources are configured in the `bullet_train` gem, but you can add more here.
+        
+        resources :microposts
       end
 
       # team-level resources.

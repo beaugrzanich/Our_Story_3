@@ -1,0 +1,8 @@
+<% micropost ||= @micropost %>
+<% user ||= @user || micropost&.user %>
+<%= render 'account/users/breadcrumbs', user: user %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, user, :microposts] %>
+<% if micropost&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: micropost.label_string, url: [:account, micropost] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'microposts' %>

@@ -1,6 +1,11 @@
 class Account::UsersController < Account::ApplicationController
   include Account::Users::ControllerBase
 
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts 
+  end
+  
   private
 
   def permitted_fields
