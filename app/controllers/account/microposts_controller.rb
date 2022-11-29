@@ -66,4 +66,8 @@ class Account::MicropostsController < Account::ApplicationController
   def process_params(strong_params)
     # 🚅 super scaffolding will insert processing for new fields above this line.
   end
+
+  def micropost_params 
+    params.require(:micropost).permit(:content)
+  end
 end

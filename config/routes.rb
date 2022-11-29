@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
         # routes for standard user actions and resources are configured in the `bullet_train` gem, but you can add more here.
         
-        resources :microposts
+        resources :microposts, only:[:create, :destory]
       end
 
       # team-level resources.
