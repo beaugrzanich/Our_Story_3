@@ -1,6 +1,6 @@
 en:
   microposts: &microposts
-    label: &label Microposts
+    label: &label My Posts
     breadcrumbs:
       label: *label
     navigation:

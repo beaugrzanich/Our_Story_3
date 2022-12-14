@@ -4,7 +4,7 @@ class Team < ApplicationRecord
   # 🚅 add concerns above.
 
   # 🚅 add belongs_to associations above.
-
+  has_many :micropost, through: :user
   # 🚅 add has_many associations above.
 
   # 🚅 add oauth providers above.

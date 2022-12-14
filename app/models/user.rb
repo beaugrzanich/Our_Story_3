@@ -1,14 +1,15 @@
 class User < ApplicationRecord
   include Users::Base
   # 🚅 add concerns above.
-
+  belongs_to :team
   # 🚅 add belongs_to associations above.
-
+  
   has_many :microposts, dependent: :destroy
+  
   # 🚅 add has_many associations above.
 
   # 🚅 add oauth providers above.
-
+  
   # 🚅 add has_one associations above.
 
   # 🚅 add scopes above.

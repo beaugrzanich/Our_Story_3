@@ -15,6 +15,13 @@ class Account::MicropostsController < Account::ApplicationController
 
   # GET /account/users/:user_id/microposts/new
   def new
+    @micropost = current_user.microposts.build(micropost_params) 
+    if @micropost.save
+      flash[:success] = "Micropost created!"
+      redirect_to root_url
+    else
+      render 'static_pages/home'
+    end
   end
 
   # GET /account/microposts/:id/edit
@@ -67,7 +74,7 @@ class Account::MicropostsController < Account::ApplicationController
     # 🚅 super scaffolding will insert processing for new fields above this line.
   end
 
-  def micropost_params 
+  def micropost_params
     params.require(:micropost).permit(:content)
   end
 end

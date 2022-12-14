@@ -1,0 +1,10 @@
+<% if can? :read, current_user %>
+  <%= render 'account/shared/menu/item', {
+    url: main_app.polymorphic_path([:account, current_user]),
+    label: t('microposts.navigation.label'),
+  } do |p| %>
+    <% p.content_for :icon do %>
+      <i class="fal fa-microphone ti ti-microphone-alt"></i>
+    <% end %>
+  <% end %>
+<% end %>

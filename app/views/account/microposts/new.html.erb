@@ -1,9 +1,9 @@
 <%= render 'account/shared/page' do |p| %>
-  <% p.content_for :title, t('.section') %>
+  <% p.content_for :title, "Micropost") %>
   <% p.content_for :body do %>
     <%= render 'account/shared/box', divider: true do |p| %>
-      <% p.content_for :title, t('.header') %>
-      <% p.content_for :description, t('.description') %>
+      <% p.content_for :title, "title") %>
+      <% p.content_for :description, "description" %>
       <% p.content_for :body do %>
         <%= render 'form', micropost: @micropost %>
       <% end %>

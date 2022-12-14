@@ -1,6 +1,7 @@
 <% unless hide_team_resource_menus? %>
   <%= render 'account/shared/menu/section', title: t('menus.main.labels.resources') do %>
     <%= render 'account/teams/menu_item' %>
+    <%= render 'account/users/menu_item' %>
     <%= render 'account/scaffolding/absolutely_abstract/creative_concepts/menu_item' unless scaffolding_things_disabled? %>
     <% # added by super scaffolding. %>
   <% end %>
