@@ -5,7 +5,8 @@ en:
       label: *label
     navigation:
       label: *label
-      icon: fal fa-puzzle-piece
+      icon: fal fa-puzzle-piece ti-pencil-alt2
+    newpost: &label Craft New Post
     buttons: &buttons
       new: Add New Micropost
       create: Create Micropost
