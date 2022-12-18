@@ -1,0 +1,18 @@
+<%= render 'account/shared/page' do |p| %>
+    <% p.content_for :title, @user.first_name + " " + @user.last_name + "'s Posts"  %>
+    
+    <% p.content_for :body do %>
+        <div class="row">
+            <div class="col-md-8">
+                <% if @user.microposts.any? %>
+                    <h3>Microposts (<%= @user.microposts.count %>)</h3>
+                    <ol class="microposts">
+                        <%= render @microposts %> 
+                    </ol>
+                    <%= will_paginate @microposts %> 
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+  

@@ -1,0 +1,12 @@
+<%= render 'account/shared/page' do |p| %>
+  <% p.content_for :title, "Microposts" %>
+  <% p.content_for :body do %>
+    <%= render 'account/shared/box', divider: true do |p| %>
+      <% p.content_for :title, "Create your new post" %>
+      <% p.content_for :description, "Posts can be anything. Be creative!" %>
+      <% p.content_for :body do %>
+        <%= render 'form', micropost: @micropost %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

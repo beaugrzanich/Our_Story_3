@@ -1,0 +1,95 @@
+en:
+  microposts: &microposts
+    label: &label My Posts
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fal fa-puzzle-piece ti-pencil-alt2
+    newpost: &label Craft New Post
+    buttons: &buttons
+      new: Add New Post
+      create: Create Post
+      edit: Edit Post
+      update: Update Post
+      destroy: Remove Post
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{micropost_name}? This will also remove any child resources and can't be undone.
+    fields: &fields
+      id:
+        heading: Micropost ID
+      user_id:
+        heading: User ID
+      content:
+        _: &content Content
+        label: *content
+        heading: *content
+      body:
+        _: &body Body
+        label: *body
+        heading: *body
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Microposts"
+      index: "List Microposts"
+      create: "Add a New Micropost"
+      member_actions: "Actions for an Individual Micropost"
+      show: "Retrieve a Micropost"
+      update: "Update a Micropost"
+      destroy: "Delete a Micropost"
+      fields: *fields
+    index:
+      section: "%{users_possessive} Microposts"
+      contexts:
+        user:
+          header: Microposts
+          description: Below is a list of Microposts that have been added for %{user_name}.
+          description_empty: No Microposts have been added for %{user_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{micropost_name}"
+      header: Micropost Details
+      description: Below are the details we have for %{micropost_name}.
+      manage_description: You'll also find options for updating these details or removing %{micropost_name} from %{user_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Micropost for %{user_name}"
+      header: New Micropost Details
+      description: Please provide the details of the new Micropost you'd like to add to %{user_name}.
+      form: *form
+    edit:
+      section: "%{micropost_name}"
+      header: Edit Micropost Details
+      description: You can update the details or settings for %{micropost_name} below.
+      form: *form
+    notifications:
+      created: Micropost was successfully created.
+      updated: Micropost was successfully updated.
+      destroyed: Micropost was successfully destroyed.
+  account:
+    microposts: *microposts
+  activerecord:
+    attributes:
+      micropost:
+        content: *content
+        body: *body
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

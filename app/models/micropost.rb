@@ -1,19 +1,22 @@
-class User < ApplicationRecord
-  include Users::Base
+class Micropost < ApplicationRecord
   # 🚅 add concerns above.
-  belongs_to :team
+
+  # 🚅 add attribute accessors above.
+
+  belongs_to :user
+  validates :user_id, presence: true
+  validates :body, presence: true
   # 🚅 add belongs_to associations above.
-  
-  has_many :microposts, dependent: :destroy
-  
+
   # 🚅 add has_many associations above.
 
-  # 🚅 add oauth providers above.
-  
+  # has_one :team, through: :user
+  has_rich_text :content
   # 🚅 add has_one associations above.
-
+  
+  default_scope -> { order(created_at: :desc) }
   # 🚅 add scopes above.
-
+  
   # 🚅 add validations above.
 
   # 🚅 add callbacks above.

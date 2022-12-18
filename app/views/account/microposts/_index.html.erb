@@ -1,0 +1,79 @@
+<% user = @user || @user %>
+<% context ||= user %>
+<% collection ||= :microposts %>
+<% hide_actions ||= false %>
+<% hide_back ||= false %>
+
+<% microposts = microposts.order(:id) unless has_order?(microposts) %>
+<% pagy, microposts = pagy(microposts, page_param: :microposts_page) %>
+
+<%= action_model_select_controller do %>
+  <%= updates_for context, collection do %>
+    <%= render 'account/shared/box', pagy: pagy do |p| %>
+      <% p.content_for :title, t(".contexts.#{context.class.name.underscore}.header") %>
+      <% p.content_for :description do %>
+        <%= t(".contexts.#{context.class.name.underscore}.description#{"_empty" unless microposts.any?}") %>
+        <%= render "shared/limits/index", model: microposts.model %>
+      <% end %>
+
+      <% p.content_for :table do %>
+        <% if microposts.any? %>
+          <table class="table">
+            <thead>
+              <tr>
+                <%= render "shared/tables/select_all" %>
+                <%# 🚅 super scaffolding will insert new field headers above this line. %>
+                <th><%= t('.fields.created_at.heading') %></th>
+                <th class="text-right"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% microposts.each do |micropost| %>
+                <% with_attribute_settings object: micropost do %>
+                  <tr data-id="<%= micropost.id %>">
+                    <%= render "shared/tables/checkbox", object: micropost %>
+                    <%# 🚅 super scaffolding will insert new fields above this line. %>
+                    <td><%= render 'shared/attributes/date_and_time', attribute: :created_at %></td>
+                    <td class="buttons">
+                      <% unless hide_actions %>
+                        <% if can? :edit, micropost %>
+                          <%= link_to t('.buttons.shorthand.edit'), [:edit, :account, micropost], class: 'button-secondary button-smaller' %>
+                        <% end %>
+                        <% if can? :destroy, micropost %>
+                          <%= button_to t('.buttons.shorthand.destroy'), [:account, micropost], method: :delete, data: { confirm: t('.buttons.confirmations.destroy', model_locales(micropost)) }, class: 'button-secondary button-smaller' %>
+                        <% end %>
+                        <%# 🚅 super scaffolding will insert new action model buttons above this line. %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      <% end %>
+
+      <% p.content_for :actions do %>
+        <% unless hide_actions %>
+          <% if context == user %>
+            <% if can? :create, Micropost.new(user: user) %>
+              <%= link_to t('.buttons.new'), [:new, :account, user, :micropost], class: "#{first_button_primary(:micropost)} new" %>
+            <% end %>
+          <% end %>
+
+          <%# 🚅 super scaffolding will insert new targets one parent action model buttons above this line. %>
+          <%# 🚅 super scaffolding will insert new bulk action model buttons above this line. %>
+          <%= render "shared/bulk_action_select" %>
+
+          <% unless hide_back %>
+            <%= link_to t('global.buttons.back'), [:account, context], class: "#{first_button_primary(:micropost)} back" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% p.content_for :raw_footer do %>
+        <%# 🚅 super scaffolding will insert new action model index views above this line. %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
