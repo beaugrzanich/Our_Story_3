@@ -1,6 +1,6 @@
 <% if can? :edit, current_user %>
   <%= render 'account/shared/menu/item', {
-    url: main_app.polymorphic_path([:account, current_user]),
+    url: (main_app.polymorphic_path([:account, current_user, :microposts])) + "/new",
     label: t('microposts.newpost'),
   } do |p| %>
     <% p.content_for :icon do %>

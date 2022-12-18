@@ -10,7 +10,7 @@ class Micropost < ApplicationRecord
 
   # 🚅 add has_many associations above.
 
-  has_one :team, through: :user
+  # has_one :team, through: :user
   has_rich_text :content
   # 🚅 add has_one associations above.
   

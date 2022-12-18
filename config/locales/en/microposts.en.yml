@@ -8,11 +8,11 @@ en:
       icon: fal fa-puzzle-piece ti-pencil-alt2
     newpost: &label Craft New Post
     buttons: &buttons
-      new: Add New Micropost
-      create: Create Micropost
-      edit: Edit Micropost
-      update: Update Micropost
-      destroy: Remove Micropost
+      new: Add New Post
+      create: Create Post
+      edit: Edit Post
+      update: Update Post
+      destroy: Remove Post
       shorthand:
         edit: Edit
         destroy: Delete

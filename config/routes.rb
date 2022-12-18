@@ -45,12 +45,14 @@ Rails.application.routes.draw do
         namespace :oauth do
           # 🚅 super scaffolding will insert new oauth providers above this line.
         end
-
+        resources :microposts
         # routes for standard user actions and resources are configured in the `bullet_train` gem, but you can add more here.
         
-        resources :microposts, only:[:create, :destory]
-      end
+       
 
+      end
+      resources :microposts
+      
       # team-level resources.
       resources :teams, extending do
         # routes for many teams actions and resources are configured in the `bullet_train` gem, but you can add more here.

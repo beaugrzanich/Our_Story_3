@@ -1,5 +1,5 @@
 class Account::MicropostsController < Account::ApplicationController
-  account_load_and_authorize_resource :micropost, through: :user, through_association: :microposts
+  # account_load_and_authorize_resource :micropost, through: :user, through_association: :microposts
 
   # GET /account/users/:user_id/microposts
   # GET /account/users/:user_id/microposts.json
@@ -15,13 +15,7 @@ class Account::MicropostsController < Account::ApplicationController
 
   # GET /account/users/:user_id/microposts/new
   def new
-    @micropost = current_user.microposts.build(micropost_params) 
-    if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to root_url
-    else
-      render 'static_pages/home'
-    end
+    @micropost = current_user.microposts.build
   end
 
   # GET /account/microposts/:id/edit
@@ -31,9 +25,10 @@ class Account::MicropostsController < Account::ApplicationController
   # POST /account/users/:user_id/microposts
   # POST /account/users/:user_id/microposts.json
   def create
+    @micropost = current_user.microposts.new(micropost_params)
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to [:account, @user, :microposts], notice: I18n.t("microposts.notifications.created") }
+        format.html { redirect_to [:account, current_user], notice: I18n.t("microposts.notifications.created") }
         format.json { render :show, status: :created, location: [:account, @micropost] }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -75,6 +70,6 @@ class Account::MicropostsController < Account::ApplicationController
   end
 
   def micropost_params
-    params.require(:micropost).permit(:content)
+    params.require(:micropost).permit(:content, :body)
   end
 end
