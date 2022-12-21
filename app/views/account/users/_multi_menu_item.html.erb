@@ -1,0 +1,10 @@
+<% if can? :edit, current_user %>
+  <%= render 'account/shared/menu/item', {
+    url: (main_app.account_users_path),
+    label: t('users.fields.userlist.label'),
+  } do |p| %>
+    <% p.content_for :icon do %>
+      <i class="fal fa-note ti ti-world"></i>
+    <% end %>
+  <% end %>
+<% end %>
