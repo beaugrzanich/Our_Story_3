@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   include Users::Base
   # 🚅 add concerns above.
-  belongs_to :team
+  # belongs_to :team
+  # I am unsure why I added the line above originally, but that line appears to have broken signups
+  # committing to add more comments in the future to avoid confusion
   # 🚅 add belongs_to associations above.
   
   has_many :microposts, dependent: :destroy
